@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penny's Patchwork Portfolio</title>
+  <meta name="description" content="A responsive, quilted 90s-style slidedeck of six portraits of Penny, a black-and-tan Cavalier King Charles Spaniel.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#deck">Skip to the slides</a>
+
+  <header class="topbar">
+    <p class="topbar-title" aria-hidden="true">&#9733; Penny&rsquo;s Patchwork Portfolio &#9733;</p>
+    <p class="topbar-sub" aria-hidden="true">~ a very good dog, in six patches ~</p>
+  </header>
+
+  <main class="stage">
+    <!-- visually-hidden announcer for screen readers -->
+    <p id="live" class="visually-hidden" aria-live="polite"></p>
+
+    <div class="deck-shell">
+      <button id="prev" class="navbtn navbtn--prev" type="button" aria-label="Previous slide">&#9664;</button>
+
+      <div id="deck" class="deck" aria-roledescription="carousel" aria-label="Photos of Penny"></div>
+
+      <button id="next" class="navbtn navbtn--next" type="button" aria-label="Next slide">&#9654;</button>
+    </div>
+
+    <div class="controls">
+      <div id="dots" class="dots" role="tablist" aria-label="Choose a slide"></div>
+      <p id="counter" class="counter" aria-hidden="true"></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Best viewed in any browser since 1996. Made with &#10084;&#65039; (and lots of treats).</p>
+    <p class="footer-construction" aria-hidden="true">&#128679; perpetually under construction &#128679;</p>
+  </footer>
+
+  <script src="slides.js"></script>
+</body>
+</html>

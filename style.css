@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Penny's Patchwork Portfolio
+   A tasteful-retro, quilted 90s slidedeck. Mobile-first + responsive.
+   ========================================================================== */
+
+:root {
+  --teal:    #1f9e9e;
+  --pink:    #ff5fa2;
+  --mustard: #f4c430;
+  --purple:  #7d5fff;
+  --cream:   #fff7e6;
+  --ink:     #2a2440;
+  --stitch:  #fff7e6;
+  --patch-shadow: 6px 6px 0 rgba(42, 36, 64, 0.22);
+  --font-display: "Trebuchet MS", "Comic Sans MS", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Trebuchet MS", Verdana, Geneva, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  min-height: 100vh;
+  /* ---- the quilt: tiled patchwork of gingham, dots & zigzags ---- */
+  background-color: var(--teal);
+  background-image:
+    /* polka dots */
+    radial-gradient(circle at 25px 25px, rgba(255,255,255,.45) 4px, transparent 5px),
+    /* gingham vertical */
+    linear-gradient(90deg, rgba(255,255,255,.16) 50%, transparent 50%),
+    /* gingham horizontal */
+    linear-gradient(0deg, rgba(255,255,255,.16) 50%, transparent 50%),
+    /* big color blocks to break the field into "patches" */
+    linear-gradient(45deg, var(--purple) 25%, transparent 25%, transparent 75%, var(--purple) 75%),
+    linear-gradient(45deg, var(--pink) 25%, transparent 25%, transparent 75%, var(--pink) 75%);
+  background-size:
+    50px 50px,
+    20px 20px,
+    20px 20px,
+    160px 160px,
+    160px 160px;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    80px 80px;
+}
+
+/* ---- accessibility helpers ---- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: .6em 1em;
+  border-radius: 0 0 8px 0; z-index: 10; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+:focus-visible {
+  outline: 3px dashed var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---- header / footer ---- */
+.topbar { text-align: center; padding: 1.4rem 1rem .4rem; }
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
+  font-weight: 800;
+  margin: 0;
+  color: var(--cream);
+  text-shadow: 2px 2px 0 var(--ink), 4px 4px 0 var(--pink);
+  letter-spacing: .5px;
+}
+.topbar-sub {
+  margin: .35rem 0 0;
+  color: var(--cream);
+  font-style: italic;
+  text-shadow: 1px 1px 0 var(--ink);
+}
+
+.footer {
+  text-align: center;
+  padding: 1.2rem 1rem 2rem;
+  color: var(--cream);
+  font-size: .85rem;
+  text-shadow: 1px 1px 0 rgba(42,36,64,.6);
+}
+.footer p { margin: .2rem 0; }
+.footer-construction { font-weight: 700; color: var(--mustard); }
+
+/* ---- stage + deck shell ---- */
+.stage {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 .75rem;
+}
+.deck-shell {
+  display: flex;
+  align-items: stretch;
+  gap: .5rem;
+}
+.deck {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* chunky beveled Web-1.0 nav buttons */
+.navbtn {
+  flex: 0 0 auto;
+  width: 48px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--ink);
+  background: var(--mustard);
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: var(--patch-shadow);
+}
+.navbtn:hover { background: #ffd863; }
+.navbtn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 rgba(42,36,64,.22); }
+
+/* ==========================================================================
+   The "patch" — every slide is a quilted fabric square
+   ========================================================================== */
+.patch {
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: var(--patch-shadow);
+  padding: 14px;
+  position: relative;
+}
+/* dashed "stitching" just inside the patch edge */
+.patch::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 2px dashed rgba(42, 36, 64, .45);
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+.slide { animation: pop .25s ease; }
+.slide[hidden] { display: none; }
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.985); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---- title slide ---- */
+.slide--title { text-align: center; padding: 2.5rem 1.25rem; }
+.title-main {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  margin: .2rem 0;
+  color: var(--purple);
+  text-shadow: 2px 2px 0 var(--mustard);
+}
+.title-sub { font-size: 1.05rem; font-style: italic; margin: .4rem 0 1rem; }
+.title-hint { font-size: .85rem; color: var(--teal); font-weight: 700; }
+.title-paw { font-size: 2.4rem; margin: .6rem 0 0; }
+
+/* ---- photo slide ---- */
+.frame { margin: 0; }
+.frame--landscape, .frame--portrait { display: grid; gap: 14px; }
+
+/* mat = inner colored border around the photo, like a framed quilt block */
+.photo-mat {
+  background: linear-gradient(135deg, var(--teal), var(--purple));
+  padding: 8px;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #ddd;
+}
+
+.caption { align-self: center; }
+.caption-title {
+  font-family: var(--font-display);
+  margin: 0 0 .4rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.8rem);
+  color: var(--pink);
+  text-shadow: 1px 1px 0 var(--ink);
+}
+.caption-blurb { margin: 0; line-height: 1.55; font-size: 1rem; }
+
+/* ---- controls ---- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0 .25rem;
+  flex-wrap: wrap;
+}
+.dots { display: flex; gap: .5rem; }
+.dot {
+  width: 16px; height: 16px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(42,36,64,.3);
+}
+.dot.is-active { background: var(--pink); }
+.dot:hover { background: var(--mustard); }
+.counter {
+  font-weight: 700;
+  color: var(--cream);
+  background: var(--ink);
+  padding: .2rem .6rem;
+  border-radius: 8px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive: side-by-side on wide screens
+   ========================================================================== */
+@media (min-width: 760px) {
+  .frame--landscape {
+    grid-template-columns: 1fr;
+  }
+  .frame--portrait {
+    grid-template-columns: minmax(0, 46%) 1fr;
+    align-items: center;
+  }
+  .frame--portrait .photo { max-height: 70vh; }
+  .navbtn { width: 56px; }
+}
+
+@media (min-width: 1000px) {
+  .frame--landscape {
+    grid-template-columns: minmax(0, 62%) 1fr;
+    align-items: center;
+  }
+}
+
+/* ==========================================================================
+   Respect reduced-motion preferences
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .slide { animation: none; }
+  .navbtn:active { transform: none; }
+  * { scroll-behavior: auto; }
+}
