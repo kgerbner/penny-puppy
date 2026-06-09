@@ -231,19 +231,24 @@ body {
   margin: 0;
 }
 
-/* music toggle — a wider beveled button that lives with the controls */
-.musicbtn {
+/* music toggle — a wider beveled button that lives with the controls.
+   Uses .navbtn.musicbtn (higher specificity than .navbtn) so the auto width
+   always beats the fixed .navbtn width, including inside media queries. */
+.navbtn.musicbtn {
   width: auto;
-  padding: .35rem .8rem;
+  min-height: 40px;
+  padding: .4rem .9rem;
   font-size: .95rem;
+  line-height: 1.2;
   font-weight: 700;
   font-family: var(--font-body);
+  white-space: nowrap;
 }
-.musicbtn.is-on {
+.navbtn.musicbtn.is-on {
   background: var(--pink);
   color: var(--cream);
 }
-.musicbtn.is-on:hover { background: #ff7db4; }
+.navbtn.musicbtn.is-on:hover { background: #ff7db4; }
 
 /* ==========================================================================
    Responsive: side-by-side on wide screens
