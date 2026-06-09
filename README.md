@@ -22,6 +22,7 @@ It also works as-is on **GitHub Pages** (Settings → Pages → deploy from the
 | `index.html` | Page shell, header/footer, deck mount point |
 | `style.css`  | Quilted patchwork background, fabric "patch" slides, retro palette, responsive layout |
 | `slides.js`  | Slide data (alt text + fun captions) and the carousel behavior |
+| `music.js`   | Optional 8-bit background chiptune, synthesized live via the Web Audio API |
 | `IMG_*.jpg` / `.jpeg` | The six photos |
 
 ## Features
@@ -35,3 +36,7 @@ It also works as-is on **GitHub Pages** (Settings → Pages → deploy from the
   touch swiping.
 - **Quilted 90s aesthetic** — a tiled patchwork background, dashed-stitch
   borders, chunky beveled buttons, and a Memphis-ish palette — kept readable.
+- **Background chiptune** — an optional looping 8-bit melody synthesized live
+  in the browser (no audio files). It's **off by default** with a visible
+  "Music: OFF/ON" toggle, so there's no surprise autoplay, and it hushes itself
+  when the tab is hidden.
